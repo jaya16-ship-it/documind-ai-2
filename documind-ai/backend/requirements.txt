@@ -2,5 +2,5 @@ fastapi==0.115.0
 uvicorn[standard]==0.30.6
 python-multipart==0.0.9
 pdfplumber==0.11.4
-anthropic==0.34.2
+anthropic
 pydantic==2.9.2
