@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DocuMind AI — Intelligent PDF Chat Assistant</title>
+<link rel="stylesheet" href="style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body data-theme="dark">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">DM</span>
+      <div class="brand-text">
+        <span class="brand-name">DocuMind AI</span>
+        <span class="brand-tag">Intelligent PDF Chat Assistant</span>
+      </div>
+    </div>
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark and light mode">
+      <span class="dot"></span> <span id="themeLabel">Dark</span>
+    </button>
+  </header>
+
+  <main class="layout">
+    <!-- LEFT RAIL: document + tools -->
+    <aside class="rail">
+      <section class="panel upload-panel" id="uploadPanel">
+        <h2 class="panel-title">Document</h2>
+        <label class="dropzone" id="dropzone" for="fileInput">
+          <span class="dropzone-icon">＋</span>
+          <span class="dropzone-text">Upload a PDF<br><small>or drag &amp; drop</small></span>
+        </label>
+        <input type="file" id="fileInput" accept="application/pdf" hidden />
+        <div id="docInfo" class="doc-info hidden">
+          <div class="doc-chip">
+            <span class="doc-icon">📄</span>
+            <div>
+              <div id="docName" class="doc-name">—</div>
+              <div id="docMeta" class="doc-meta">—</div>
+            </div>
+          </div>
+        </div>
+        <p id="uploadStatus" class="status-line"></p>
+      </section>
+
+      <section class="panel tools-panel">
+        <h2 class="panel-title">Tools</h2>
+        <button class="tool-btn" id="btnSummary" disabled>
+          <span class="tool-tag">SUM</span> Chapter-wise Summary
+        </button>
+        <button class="tool-btn" id="btnKeypoints" disabled>
+          <span class="tool-tag">KEY</span> Extract Key Points
+        </button>
+        <button class="tool-btn" id="btnDownload" disabled>
+          <span class="tool-tag">PDF</span> Download Summary
+        </button>
+      </section>
+
+      <section class="panel output-panel hidden" id="outputPanel">
+        <div class="output-header">
+          <h2 class="panel-title" id="outputTitle">Result</h2>
+          <button class="close-btn" id="closeOutput">✕</button>
+        </div>
+        <div class="output-body" id="outputBody"></div>
+      </section>
+    </aside>
+
+    <!-- MAIN: chat -->
+    <section class="chat-area">
+      <div class="chat-scroll" id="chatScroll">
+        <div class="empty-state" id="emptyState">
+          <div class="empty-mark">§</div>
+          <h1>Ask your document anything</h1>
+          <p>Upload a PDF on the left, then ask questions in plain language. Answers are grounded in the document, with page references you can trust.</p>
+        </div>
+      </div>
+
+      <form class="composer" id="composer">
+        <input
+          type="text"
+          id="questionInput"
+          placeholder="Upload a PDF to start chatting…"
+          autocomplete="off"
+          disabled
+        />
+        <button type="submit" id="sendBtn" disabled aria-label="Send question">↑</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
